@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(LocalAppDataCleaner VERSION 1.1.0 LANGUAGES C CXX)
+project(LocalAppDataCleaner VERSION 1.1.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -55,18 +55,6 @@ else()
     FetchContent_MakeAvailable(eui_neo)
 endif()
 
-# -----------------------------------------------------------------------------
-# 应用图标
-#
-# EUI-NEO 在 configure 阶段会写一个 eui_app_icon.rc，指向它自己的
-# EUI-NEO-main/assets/icon.ico；而且这个 .ico 没有被登记成 .rc 的依赖，
-# 所以只替换 ico、不重新 configure 的话，windres 不会重编，exe 图标看起来
-# “换了没用”。这里改成用本工程自己的图标：
-#   1) 先清掉框架准备的图标资源，避免两份 ICON 资源打架；
-#   2) 把 19icon.ico 登记为 configure 依赖，ico 一变就重新生成 .rc；
-#   3) 自己写 .rc 并加进目标。
-# 运行时窗口图标用 19icon.png（见 main.cpp 的 .iconPath）。
-# -----------------------------------------------------------------------------
 set(APP_ICON_PNG "${CMAKE_CURRENT_SOURCE_DIR}/assets/19icon.png")
 set(APP_ICON_ICO "${CMAKE_CURRENT_SOURCE_DIR}/assets/19icon.ico")
 
@@ -93,8 +81,6 @@ if(WIN32 AND EXISTS "${APP_ICON_ICO}")
         "${APP_RESOURCES_RC}"
         @ONLY
     )
-    # .rc 按 UTF-8 保存，告诉 windres 用同样的代码页读取，
-    # 否则版权符号 © 会被按系统 ANSI（中文 Windows 下是 GBK）解释成 "?"。
     set_source_files_properties("${APP_RESOURCES_RC}" PROPERTIES
         COMPILE_OPTIONS "--codepage=65001")
     target_sources(localappdata_cleaner PRIVATE "${APP_RESOURCES_RC}")
