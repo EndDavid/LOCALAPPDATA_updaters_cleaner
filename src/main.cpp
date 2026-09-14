@@ -2872,7 +2872,7 @@ const DslAppConfig& dslAppConfig() {
         .title("LocalAppData 更新残留清理")
         .pageId("localappdata_cleaner")
         .clearColor({0.055f, 0.062f, 0.078f, 1.0f})
-        .windowSize(1200, 840)
+        .windowSize(1235, 960)
         // 窗口图标取自可执行文件旁的 assets/；exe 自身的图标和版本信息由 CMake 的 .rc 资源提供。
         .iconPath("assets/19icon.png")
         .fps(90.0);
