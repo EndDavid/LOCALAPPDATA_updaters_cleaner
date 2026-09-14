@@ -7,7 +7,7 @@ _项目基于 [EUI-NEO](https://github.com/sudoevolve/EUI-NEO)_
 这类文件是很多软件更新后留下的“一次性”产物：`xxx-updater` 目录里的安装程序、下载到一半的
 `installer.exe` / `setup.exe` / `.msi` / `.nupkg`，以及 `Temp` 里遗留的陈旧条目。
 
-`%LOCALAPPDATA%` 通常被当作重要数据目录，不好整体清理，软件按明确的规则挑出可删的部分，
+`%LOCALAPPDATA%` 通常被当作重要数据目录，难以整体清理，软件按明确的规则挑选出可删的部分，
 并由你逐项确认。
 
 ## 功能
@@ -17,7 +17,7 @@ _项目基于 [EUI-NEO](https://github.com/sudoevolve/EUI-NEO)_
 - 按名称 / 修改日期 / 类型 / 大小排序，支持升序与降序
 - 清理前弹出确认面板列出待删清单，**不可恢复**
 - 可自定义排除规则
-- 导出清理清单，位置自选
+- 导出清理清单
 
 
 ## 扫描规则
