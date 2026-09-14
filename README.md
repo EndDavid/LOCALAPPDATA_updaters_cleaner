@@ -54,18 +54,6 @@ assets/                 运行素材（窗口图标、列表用文件夹图标�
 cmake/app_resources.rc.in  Windows 图标与 VERSIONINFO 的模板
 ```
 
-## 版本号与图标
-
-- 版本号在 `CMakeLists.txt` 的 `project(LocalAppDataCleaner VERSION x.y.z ...)` 里改，
-  它会同时写进可执行文件的 VERSIONINFO（产品名、版本、版权）。
-- 图标：把方形 PNG 放到 `assets/19icon.png`，然后重新生成多尺寸 ico：
-
-  ```sh
-  python tools/make_icon.py assets/19icon.png assets/19icon.ico
-  ```
-
-  `.ico` 已登记为 CMake 的 configure 依赖，改完重新构建即会生效。
-
 ## 依赖与许可
 
 - 界面框架 EUI-NEO 以源码或在线拉取方式引入，遵循其 Apache License 2.0，本仓库不再分发其源码。
